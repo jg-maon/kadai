@@ -84,11 +84,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\source\Cube.cpp" />
+    <ClCompile Include="..\source\Face.cpp" />
     <ClCompile Include="..\source\main.cpp" />
     <ClCompile Include="..\source\Math.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\Cube.h" />
+    <ClInclude Include="..\source\Face.h" />
     <ClInclude Include="..\source\Math.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

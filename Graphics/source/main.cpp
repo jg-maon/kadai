@@ -33,16 +33,13 @@ public:
 		int result = ::DxLib::SetGraphMode(
 			m_width,
 			m_height,
-			24);
+			32);
 
 		if (DX_CHANGESCREEN_OK != result)
 		{
 			return false;
 		}
-		if (!::DxLib::SetWindowSize(m_width, m_height))
-		{
-			return false;
-		}
+
 
 
 		m_initialized = true;
@@ -78,6 +75,7 @@ public:
 			return false;
 		}
 
+		::DxLib::ChangeWindowMode(TRUE);	// ウインドウモードに変更
 		if (::DxLib::DxLib_Init() == -1)
 		{
 			MessageBox(nullptr, "Initializing error", "Error!", MB_ICONERROR | MB_TASKMODAL | MB_TOPMOST);
@@ -113,6 +111,6 @@ private:
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
 	Application app(hInstance, hPrevInstance, lpCmdLine, nCmdShow);
-	app.Run();
+	if (!app.Run())return 1;
 	return 0;
 }

@@ -1,18 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="chapter1">
+    <Filter Include="sources">
       <UniqueIdentifier>{7e216477-efd3-4dee-ade7-1df5650f6f53}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\source\main.cpp">
-      <Filter>chapter1</Filter>
+      <Filter>sources</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\Math.cpp" />
+    <ClCompile Include="..\source\Cube.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\Face.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\Math.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\source\Cube.h" />
-    <ClInclude Include="..\source\Math.h" />
+    <ClInclude Include="..\source\Cube.h">
+      <Filter>sources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\Face.h">
+      <Filter>sources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\Math.h">
+      <Filter>sources</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
