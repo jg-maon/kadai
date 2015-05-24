@@ -1,5 +1,7 @@
 #include "DxLib.h"
 
+#include "Cube.h"
+
 class Window
 {
 public:
@@ -86,11 +88,36 @@ public:
 		// 描画先画面を裏画面にセット
 		SetDrawScreen(DX_SCREEN_BACK);
 
-		SetCameraNearFar(1.f, 10.f);
+		SetCameraNearFar(1.f, 100.f);
 
+		VECTOR3 cameraPos(0.f, 0.f, -10.f);
+		VECTOR3 targetPos(0.f, 0.f, 0.f);
+
+		DxLib::SetCameraPositionAndTarget_UpVecY(cameraPos, targetPos);
+
+		Cube cube(1.f);
 		while (_LoopProc() && CheckHitKey(KEY_INPUT_ESCAPE) == 0)
 		{
+			const std::vector<Face>& faces = cube.GetFaces();
+			for (const Face& face : faces)
+			{
+				int vertexNum = static_cast<int>(face.GetVertexNum());
+				
+				for (int i = 0; i < vertexNum - 1; ++i)
+				{
+					int j = (i + 1) % vertexNum;
 
+					// 頂点の取得
+					VECTOR3 from(face.GetVertexAt(i));
+					VECTOR3 to(face.GetVertexAt(j));
+
+					// 座標変換
+					
+					// 描画
+					DxLib::DrawLine3D(from, to, -1);
+				}
+
+			}
 		}
 
 
