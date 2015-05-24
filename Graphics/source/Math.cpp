@@ -1,5 +1,7 @@
 #include "Math.h"
 
+#include <cmath>
+
 #pragma region VECTOR2
 VECTOR2::VECTOR2()
 	: x(0.f)
@@ -51,6 +53,29 @@ VECTOR2& VECTOR2::negate()
 	x = -x;
 	y = -y;
 	return *this;
+}
+
+float VECTOR2::length() const
+{
+	return std::sqrtf(x*x + y*y);
+}
+
+VECTOR2& VECTOR2::normalize()
+{
+	float mag = 1.f / length();
+	x *= mag;
+	y *= mag;
+	return *this;
+}
+
+float VECTOR2::dot(const VECTOR2& v) const
+{
+	return x*v.x + y*v.y;
+}
+
+float VECTOR2::cross(const VECTOR2& v) const
+{
+	return x*v.y - y*v.x;
 }
 
 #pragma endregion // VECTOR2
@@ -120,6 +145,33 @@ VECTOR3& VECTOR3::negate()
 	return *this;
 }
 
+float VECTOR3::length() const
+{
+	return std::sqrtf(x*x + y*y + z*z);
+}
+
+VECTOR3& VECTOR3::normalize()
+{
+	float mag = 1.f / length();
+	x *= mag;
+	y *= mag;
+	z *= mag;
+	return *this;
+}
+
+float VECTOR3::dot(const VECTOR3& v) const
+{
+	return x*v.x + y*v.y + z*v.z;
+}
+
+VECTOR3 VECTOR3::cross(const VECTOR3& v) const
+{
+	return VECTOR3(
+		y*v.z - z*v.y,
+		z*v.x - x*v.z,
+		x*v.y - y*v.x
+		);
+}
 
 #pragma endregion // VECTOR3
 
@@ -185,6 +237,21 @@ VECTOR4& VECTOR4::negate()
 	y = -y;
 	z = -z;
 	w = -w;
+	return *this;
+}
+
+float VECTOR4::length() const
+{
+	return std::sqrtf(x*x + y*y + z*z + w*w);
+}
+
+VECTOR4& VECTOR4::normalize()
+{
+	float mag = 1.f / length();
+	x *= mag;
+	y *= mag;
+	z *= mag;
+	w *= mag;
 	return *this;
 }
 

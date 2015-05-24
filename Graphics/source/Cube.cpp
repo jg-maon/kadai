@@ -54,7 +54,7 @@ bool Cube::_GenerateFaces()
 	{
 		return false;
 	}
-	if (!m_verticies.empty())
+	if (m_verticies.empty())
 	{
 		return false;
 	}
