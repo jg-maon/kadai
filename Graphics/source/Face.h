@@ -33,7 +33,7 @@ public:
 	size_t GetVertexNum() const;
 
 private:
-	std::vector<VECTOR4>	m_verticies;	//!< ’¸“_
+	std::vector<VECTOR4>	m_vertices;	//!< ’¸“_
 
 };
 

@@ -1,10 +1,10 @@
 #include "Cube.h"
 
 Cube::Cube(float size)
-	: m_verticies()
+	: m_vertices()
 	, m_faces()
 {
-	_GenerateVerticies(size);
+	_GenerateVertices(size);
 	_GenerateFaces();
 }
 
@@ -13,9 +13,9 @@ Cube::~Cube()
 }
 
 // í∏ì_ÇÃéÊìæ
-const std::vector<VECTOR4>& Cube::GetVerticies() const
+const std::vector<VECTOR4>& Cube::GetVertices() const
 {
-	return m_verticies;
+	return m_vertices;
 }
 
 // ñ ÇÃéÊìæ
@@ -26,22 +26,22 @@ const std::vector<Face>& Cube::GetFaces() const
 
 
 // í∏ì_ÇÃçÏê¨
-bool Cube::_GenerateVerticies(float size)
+bool Cube::_GenerateVertices(float size)
 {
-	if (!m_verticies.empty())
+	if (!m_vertices.empty())
 	{
 		return false;
 	}
 	float half = size / 2.f;
 
-	m_verticies.emplace_back(-half, -half, -half, 1.f);	// 0
-	m_verticies.emplace_back(-half, -half, +half, 1.f);	// 1
-	m_verticies.emplace_back(+half, -half, +half, 1.f);	// 2
-	m_verticies.emplace_back(+half, -half, -half, 1.f);	// 3
-	m_verticies.emplace_back(-half, +half, -half, 1.f);	// 4
-	m_verticies.emplace_back(-half, +half, +half, 1.f);	// 5
-	m_verticies.emplace_back(+half, +half, +half, 1.f);	// 6
-	m_verticies.emplace_back(+half, +half, -half, 1.f);	// 7
+	m_vertices.emplace_back(-half, -half, -half, 1.f);	// 0
+	m_vertices.emplace_back(-half, -half, +half, 1.f);	// 1
+	m_vertices.emplace_back(+half, -half, +half, 1.f);	// 2
+	m_vertices.emplace_back(+half, -half, -half, 1.f);	// 3
+	m_vertices.emplace_back(-half, +half, -half, 1.f);	// 4
+	m_vertices.emplace_back(-half, +half, +half, 1.f);	// 5
+	m_vertices.emplace_back(+half, +half, +half, 1.f);	// 6
+	m_vertices.emplace_back(+half, +half, -half, 1.f);	// 7
 
 	return true;
 }
@@ -54,7 +54,7 @@ bool Cube::_GenerateFaces()
 	{
 		return false;
 	}
-	if (m_verticies.empty())
+	if (m_vertices.empty())
 	{
 		return false;
 	}
@@ -87,7 +87,7 @@ bool Cube::_GenerateFaces()
 		// í∏ì_ÇÃí«â¡
 		for (int j = 0; j < VERTEX_NUM; ++j)
 		{
-			face.AddVertex(m_verticies[vertexIndex[i][j]]);
+			face.AddVertex(m_vertices[vertexIndex[i][j]]);
 		}
 		// ñ Ç∆ÇµÇƒí«â¡
 		m_faces.push_back(face);

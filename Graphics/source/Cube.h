@@ -21,7 +21,7 @@ public:
 		@param[in]	‚È‚µ
 		@return		’¸“_
 	*/
-	const std::vector<VECTOR4>& GetVerticies() const;
+	const std::vector<VECTOR4>& GetVertices() const;
 
 	/**
 		@brief		–Ê‚Ìæ“¾
@@ -38,7 +38,7 @@ private:
 		@retval		true	ì¬
 		@retval		false	¸”s(Šù‚Éì¬‚³‚ê‚Ä‚¢‚é)
 	*/
-	bool _GenerateVerticies(float size);
+	bool _GenerateVertices(float size);
 
 	/**
 		@brief		–Ê‚Ìì¬
@@ -50,7 +50,7 @@ private:
 	bool _GenerateFaces();
 
 private:
-	std::vector<VECTOR4> m_verticies;	//!< ’¸“_
+	std::vector<VECTOR4> m_vertices;	//!< ’¸“_
 
 	std::vector<Face>	m_faces;		//!< –Ê
 };

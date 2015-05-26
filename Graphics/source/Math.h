@@ -493,6 +493,36 @@ namespace ns_Math
 
 		return out;
 	}
+	
+	/**
+		@brief		回転行列の作成
+		@param[out]	out	回転行列
+		@param[in]	rotX	回転角(単位:ラジアン)
+		@param[in]	rotY	回転角(単位:ラジアン)
+		@param[in]	rotZ	回転角(単位:ラジアン)
+		@return		行列の参照
+	*/
+	inline MATRIX& CreateRotationXYZMatrix(MATRIX& out, float rotX, float rotY, float rotZ)
+	{
+		MATRIX matRotation = {
+			cosf(rotZ)*cosf(rotX), cosf(rotZ)*sinf(rotX)*sinf(rotY) - sinf(rotZ)*cosf(rotY), cosf(rotZ)*sinf(rotX)*cosf(rotY) + sinf(rotZ)*sinf(rotY), 0.0f,
+			sinf(rotZ)*cosf(rotX), sinf(rotZ)*sinf(rotX)*sinf(rotY) + cosf(rotZ)*cosf(rotY), sinf(rotZ)*sinf(rotX)*cosf(rotY) - cosf(rotZ)*sinf(rotY), 0.0f,
+			-sinf(rotX), cosf(rotX)*sinf(rotY), cosf(rotX)*cosf(rotY), 0.0f,
+			0.0f, 0.0f, 0.0f, 1.0f };
+		out = matRotation;
+		return out;
+	}
+
+	inline MATRIX& CreateScalingMatrix(MATRIX& out, float scaleX, float scaleY, float scaleZ)
+	{
+		MATRIX matScale = {
+			scaleX, 0.0f, 0.0f, 0.0f,
+			0.0f, scaleY, 0.0f, 0.0f,
+			0.0f, 0.0f, scaleZ, 0.0f,
+			0.0f, 0.0f, 0.0f, 1.0f };
+		out = matScale;
+		return out;
+	}
 
 	/**
 		@brief		透視投影行列の作成
@@ -547,6 +577,7 @@ namespace ns_Math
 
 		return out;
 	}
+
 
 
 	/**
@@ -624,7 +655,7 @@ namespace ns_Math
 	
 	/**
 		@brief	4次元ベクトル * 行列
-		@param[put]	out	変換結果
+		@param[out]	out	変換結果
 		@param[in]	v	ベクトル
 		@param[in]	mat	行列
 		@return		変換結果のベクトルの参照
@@ -650,12 +681,12 @@ namespace ns_Math
 
 	/**
 		@brief	行列 * 4次元ベクトル
-		@param[put]	out	変換結果
+		@param[out]	out	変換結果
 		@param[in]	mat	行列
 		@param[in]	v	ベクトル
 		@return		変換結果のベクトルの参照
 	*/
-	inline VECTOR4 Vector4Transform(VECTOR4& out, const MATRIX& mat, const VECTOR4& v)
+	inline VECTOR4& Vector4Transform(VECTOR4& out, const MATRIX& mat, const VECTOR4& v)
 	{
 		float v4[4] = { v.x, v.y, v.z, v.w };
 		float rv4[4] = { 0.0f };
@@ -673,6 +704,8 @@ namespace ns_Math
 
 		return out;
 	}
+
+
 
 }	// namespace ns_Math
 using namespace ns_Math;
